@@ -71,7 +71,7 @@ public class PullRequestListener implements DisposableBean
 	@EventListener
 	public void mergedEvent(PullRequestMergedEvent event) throws IOException
 	{
-	//	sendPullRequestEvent(event, EventType.PULL_REQUEST_UPDATED);
+		sendPullRequestEvent(event, EventType.PULL_REQUEST_UPDATED);
 	}
 
 	@EventListener
@@ -83,8 +83,8 @@ public class PullRequestListener implements DisposableBean
 
 	private void sendPullRequestEvent(PullRequestEvent event, EventType eventType) throws IOException
 	{
-	//	BitbucketServerPullRequestEvent pullRequestEvent = Events.createPullrequestEvent(event);
-	//	sendEvents(pullRequestEvent, event.getPullRequest().getToRef().getRepository(), eventType);
+		BitbucketServerPullRequestEvent pullRequestEvent = Events.createPullrequestEvent(event);
+		sendEvents(pullRequestEvent, event.getPullRequest().getToRef().getRepository(), eventType);
 	}
 
 	private void sendEvents(Object event, Repository repo, EventType eventType) throws IOException
